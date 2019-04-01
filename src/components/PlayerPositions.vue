@@ -16,43 +16,43 @@ export default {
             checkedPositionsArray: [],
             positions: [
             {
-                positionId: 'goalkeeper',
+                positionId: 'Goalkeeper',
                 positionValue: 'Goalkeeper'
             },
             {
-                positionId: 'rightBack',
+                positionId: 'Right-Back',
                 positionValue: 'Right Back'
             },
             {
-                positionId: 'leftBack',
+                positionId: 'Left-Back',
                 positionValue: 'Left Back'
             },
             {
-                positionId: 'centreBack',
+                positionId: 'Centre-Back',
                 positionValue: 'Centre Back'
             },
             {
-                positionId: 'defensiveMidifield',
+                positionId: 'Defensive-Midifield',
                 positionValue: 'Defensive Midfield'
             },
             {
-                positionId: 'centreMidfield',
+                positionId: 'Centre-Midfield',
                 positionValue: 'Centre Midfield'
             },
             {
-                positionId: 'attackingMidfield',
+                positionId: 'Attacking-Midfield',
                 positionValue: 'Atticking Midfield'
             },
             {
-                positionId: 'rightWing',
+                positionId: 'Right-Wing',
                 positionValue: 'Right Wing'
             },
             {
-                positionId: 'leftWing',
+                positionId: 'Left-Wing',
                 positionValue: 'Left Wing'
             },
             {
-                positionId: 'striker',
+                positionId: 'Striker',
                 positionValue: 'Striker'
             }]
         }

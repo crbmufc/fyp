@@ -15,55 +15,55 @@ export default {
             checkedTraitsArray: [],
             traits: [
             {
-                traitId: 'crosser',
+                traitId: 'Crosser',
                 traitValue: 'Crosser'
             },
             {
-                traitId: 'dribbler',
+                traitId: 'Dribbler',
                 traitValue: 'Dribbler'
             },
             {
-                traitId: 'finisher',
+                traitId: 'Finisher',
                 traitValue: 'Finisher'
             },
             {
-                traitId: 'heading',
+                traitId: 'Heading',
                 traitValue: 'Heading'
             },
             {
-                traitId: 'leader',
+                traitId: 'Leader',
                 traitValue: 'Leader'
             },
             {
-                traitId: 'longShots',
+                traitId: 'Long-Shots',
                 traitValue: 'Long Shots'
             },
             {
-                traitId: 'longThrow',
+                traitId: 'Long-Throw',
                 traitValue: 'Long Throw'
             },
             {
-                traitId: 'penaltyTaker',
+                traitId: 'Penalty-Taker',
                 traitValue: 'Penalty Taker'
             },
             {
-                traitId: 'playmaker',
+                traitId: 'Playmaker',
                 traitValue: 'Playmaker'
             },
             {
-                traitId: 'setPieces',
+                traitId: 'Set-Pieces',
                 traitValue: 'Set Pieces'
             },
             {
-                traitId: 'speedster',
+                traitId: 'Speedster',
                 traitValue: 'Speedster'
             },
             {
-                traitId: 'strength',
+                traitId: 'Strength',
                 traitValue: 'Strength'
             },
             {
-                traitId: 'workhorse',
+                traitId: 'Workhorse',
                 traitValue: 'Workhorse'
             }]
         }  

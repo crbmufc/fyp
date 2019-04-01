@@ -1,11 +1,20 @@
 import Vue from 'vue'
 import VueFire from 'vuefire'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import firebase from 'firebase'
 
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
+
+Vue.use(VueFire)
+Vue.use(Vuetify, {
+  iconfont: 'md'
+})
+
 
 Vue.config.productionTip = false
 
@@ -32,3 +41,4 @@ firebase.auth().onAuthStateChanged(() => {
 });
 
 export const database = firebaseApp.database();
+// export const players = database.ref('/Players');

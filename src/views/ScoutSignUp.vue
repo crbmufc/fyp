@@ -6,7 +6,7 @@
         <input type="text" v-model="clubname" placeholder="Club Name"><br>
         <input type="text" v-model="email" placeholder="Email"><br>
         <input type="password" v-model="password" placeholder="Password"><br>
-        <button @click="scoutSignUp">Create Account</button>
+        <v-btn @click="scoutSignUp">Create Account</v-btn>
     </div>
 </template>
 

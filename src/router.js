@@ -9,12 +9,19 @@ import PlayerSignUp from './views/PlayerSignUp.vue'
 import SignUp from './views/SignUp.vue'
 import ScoutHome from './views/ScoutHome.vue'
 import PlayerHome from './views/PlayerHome.vue'
+import PlayerResults from './views/PlayerResults.vue'
 
 
 Vue.use(Router)
 
 const router = new Router({
+  mode: 'history',
   routes: [
+    {
+      path: '/player-results',
+      name: 'PlayerResults',
+      component: PlayerResults
+    },
     {
       path: '/login',
       name: 'Login',
@@ -57,27 +64,27 @@ const router = new Router({
       component: Home
     },
     {
-      path: '*',
+      path: '/',
       redirect: '/home'
     },
-    {
-      path: '#',
-      redirect: '/home'
-    },
-    {
-      path: '*',
-      redirect: '/home'
-    }
+    // {
+    //   path: '#',
+    //   redirect: '/home'
+    // },
+    // {
+    //   path: '*',
+    //   redirect: '/home'
+    // }
   ]
 });
 
-router.beforeEach((to, from, next) => {
-  const currentUser = firebase.auth().currentUser;
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+// router.beforeEach((to, from, next) => {
+//   const currentUser = firebase.auth().currentUser;
+//   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
-  if (requiresAuth && !currentUser) next('login');
-  else if (!requiresAuth && currentUser) next('home');
-  else next();
-});
+//   if (requiresAuth && !currentUser) next('login');
+//   else if (!requiresAuth && currentUser) next('home');
+//   else next();
+// });
 
 export default router;

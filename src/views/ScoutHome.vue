@@ -1,7 +1,7 @@
 <template>
     <div class="scout-home">
         <h3>Welcome Scout.</h3>
-        <button @click="logout">Logout</button>
+        <v-btn @click="logout">Logout</v-btn>
     </div>
     
 </template>

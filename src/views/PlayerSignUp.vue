@@ -34,7 +34,7 @@
             <h3>Please select your player traits.</h3>
             <PlayerTraits @checked="checkedTraitItems"></PlayerTraits>
         </div>
-        <button @click="playerSignUp">Create Account</button>
+        <v-btn @click="playerSignUp">Create Account</v-btn>
     </div>
 </template>
 
@@ -150,6 +150,7 @@ export default {
 </script>
 
 <style scoped>
+
     .player-sign-up {
         margin-top: 40px;
     }

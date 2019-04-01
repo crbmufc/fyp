@@ -1,7 +1,7 @@
 <template>
   <div class="counties">
     <div class="player-county">
-        <select v-model="selectedCounty" @change="onChange()">
+        <select class="counties-select" v-model="selectedCounty" @change="onChange()">
             <option :id="county.countyId" v-for="county in counties" v-bind:value="{ text: county.countyValue, id: county.countyId }">{{county.countyValue}}</option>
         </select>
     </div>
@@ -229,6 +229,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.counties-select {
+    border: 1px solid grey;
+}
 
 </style>
