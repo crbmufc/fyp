@@ -9,7 +9,7 @@ import PlayerSignUp from './views/PlayerSignUp.vue'
 import SignUp from './views/SignUp.vue'
 import ScoutHome from './views/ScoutHome.vue'
 import PlayerHome from './views/PlayerHome.vue'
-import PlayerResults from './views/PlayerResults.vue'
+import PlayerSearch from './views/PlayerSearch.vue'
 
 
 Vue.use(Router)
@@ -18,9 +18,9 @@ const router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/player-results',
-      name: 'PlayerResults',
-      component: PlayerResults
+      path: '/player-search',
+      name: 'PlayerSearch',
+      component: PlayerSearch
     },
     {
       path: '/login',

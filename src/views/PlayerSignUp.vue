@@ -2,23 +2,22 @@
     <div class="player-sign-up">
         <h3>Create Player Account</h3>
 
-        <label>First Name</label>
-        <input type="text" v-model="firstname" placeholder="Please enter your first name"><br>
+        <!-- <label>First Name</label> -->
+        <v-text-field type="text" v-model="firstname"  label="First Name" placeholder="Please enter your first name"></v-text-field>
 
-        <label>Last Name</label>
-        <input type="text" v-model="lastname" placeholder="Please enter your last name"><br>
+        <v-text-field type="text" v-model="lastname" label="Last Name" placeholder="Please enter your last name"></v-text-field>
 
         <label>Date of Birth</label>
-        <input type="date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" v-model="dob"><br>
+        <input type="date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" placeholder="DD/MM/YYYY" v-model="dob"><br>
 
-        <label>Email</label>
-        <input type="text" v-model="email" placeholder="please enter your email address"><br>
+        <v-text-field type="email" v-model="email" label="Email" placeholder="please enter your email address"></v-text-field>
 
-        <label>Password</label>
-        <input type="password" v-model="password" placeholder="please enter a password"><br>
+        <v-text-field type="password" v-model="password" label="Password" placeholder="please enter a password"></v-text-field>
 
         <label>County</label>
         <Counties @selected="selectedCountyItem"></Counties><br>
+
+        <v-text-field type="text" v-model="currentclub" label="Current Club" placeholder="please enter your current club"></v-text-field>
 
         <label>Preferred Foot</label>
         <PreferredFoot @selected="selectedFootItem"></PreferredFoot><br>
@@ -63,6 +62,7 @@ export default {
             email: '',
             dob: '',
             selectedCounty: '',
+            currentclub: '',
             password: '',
             role: 'player',
             selectedExperience: '',
@@ -114,6 +114,7 @@ export default {
                     var firstName = this.firstname;
                     var lastName = this.lastname;
                     var email = this.email;
+                    var currentClub = this.currentclub;
                     var dob = this.dob;
                     var birthday = Date.parse(dob)
                     var age = ~~((Date.now() - birthday) / (31557600000))
@@ -131,6 +132,7 @@ export default {
                         age: age,
                         role: role,
                         playingExperience: selectedExperience,
+                        currentClub: currentClub,
                         county: selectedCounty,
                         preferredFoot: selectedFoot,
                         positions: this.positionsObj,

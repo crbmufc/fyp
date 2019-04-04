@@ -40,5 +40,25 @@ firebase.auth().onAuthStateChanged(() => {
   }
 });
 
+
+//filters
+
+
+// Vue.filter('filterPlayingExperience', function(value){
+//   return value.toUpperCase();
+// });
+// Vue.filter('filterCounty', function(value){
+//   return value.toUpperCase();
+// });
+// Vue.filter('filterPositions', function(value){
+//   return value.toUpperCase();
+// });
+// Vue.filter('filterTraits', function(value){
+//   return value.toUpperCase();
+// });
+// Vue.filter('filterPreferredFoot', function(value){
+//   return value.toUpperCase();
+// });
+
 export const database = firebaseApp.database();
 // export const players = database.ref('/Players');
