@@ -20,35 +20,35 @@ export default {
                 positionValue: 'Goalkeeper'
             },
             {
-                positionId: 'Right-Back',
+                positionId: 'Right_Back',
                 positionValue: 'Right Back'
             },
             {
-                positionId: 'Left-Back',
+                positionId: 'Left_Back',
                 positionValue: 'Left Back'
             },
             {
-                positionId: 'Centre-Back',
+                positionId: 'Centre_Back',
                 positionValue: 'Centre Back'
             },
             {
-                positionId: 'Defensive-Midifield',
+                positionId: 'Defensive_Midifield',
                 positionValue: 'Defensive Midfield'
             },
             {
-                positionId: 'Centre-Midfield',
+                positionId: 'Centre_Midfield',
                 positionValue: 'Centre Midfield'
             },
             {
-                positionId: 'Attacking-Midfield',
-                positionValue: 'Atticking Midfield'
+                positionId: 'Attacking_Midfield',
+                positionValue: 'Attacking Midfield'
             },
             {
-                positionId: 'Right-Wing',
+                positionId: 'Right_Wing',
                 positionValue: 'Right Wing'
             },
             {
-                positionId: 'Left-Wing',
+                positionId: 'Left_Wing',
                 positionValue: 'Left Wing'
             },
             {
@@ -60,13 +60,9 @@ export default {
     methods: {
         checked: function(e) {
 
-            // console.log('hello world')
             var checkedPositionValue = e.target.value;
-            // var checkedPositionsArray = [];
-            // console.log(checkedPositionValue);
             if (e.target.checked) {
                 this.checkedPositionsArray.push(checkedPositionValue)
-                // console.log(this.checkedPositionsArray)
                 this.$emit('checked', this.checkedPositionsArray)
             }
             else {
@@ -77,7 +73,6 @@ export default {
                     
                 }
             }
-            // console.log(this.checkedPositionsArray);
         }
     },
 }

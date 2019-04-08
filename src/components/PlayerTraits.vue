@@ -35,15 +35,15 @@ export default {
                 traitValue: 'Leader'
             },
             {
-                traitId: 'Long-Shots',
+                traitId: 'Long_Shots',
                 traitValue: 'Long Shots'
             },
             {
-                traitId: 'Long-Throw',
+                traitId: 'Long_Throw',
                 traitValue: 'Long Throw'
             },
             {
-                traitId: 'Penalty-Taker',
+                traitId: 'Penalty_Taker',
                 traitValue: 'Penalty Taker'
             },
             {
@@ -51,7 +51,7 @@ export default {
                 traitValue: 'Playmaker'
             },
             {
-                traitId: 'Set-Pieces',
+                traitId: 'Set_Pieces',
                 traitValue: 'Set Pieces'
             },
             {
@@ -71,12 +71,9 @@ export default {
     methods: {
         checked: function(e) {
 
-            // console.log('hello world')
             var checkedTraitValue = e.target.value;
-            // console.log(checkedPositionValue);
             if (e.target.checked) {
                 this.checkedTraitsArray.push(checkedTraitValue)
-                // console.log(this.checkedPositionsArray)
                 this.$emit('checked', this.checkedTraitsArray)
             }
             else {

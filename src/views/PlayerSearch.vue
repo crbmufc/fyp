@@ -104,16 +104,16 @@
             <v-card-title>
                 <h3>Positions</h3>
             </v-card-title>
-            <div v-for="(value,position) in player.positions" :key="position">
-                <v-card-text>{{position.replace('-', ' ')}}</v-card-text>
+            <div v-for="(key,position) in player.positions" :key="position">
+                <v-card-text>{{position.replace('_', ' ')}}</v-card-text>
             </div>
         </div>
         <div class="card-data">
             <v-card-title>
                 <h3>Traits</h3>
             </v-card-title>
-            <div v-for="(value,trait) in player.traits" :key="trait">
-                <v-card-text>{{trait.replace('-', ' ')}}</v-card-text>
+            <div v-for="(key,trait) in player.traits" :key="trait">
+                <v-card-text>{{trait.replace('_', ' ')}}</v-card-text>
             </div>
         </div>
         <div class="card-data">
@@ -145,7 +145,9 @@ export default {
             positions: {
 
             },
-            // selectedAge: 18,
+            traits: {
+
+            },
             selectedPlayingExperience: '',
             counties: [
             {
@@ -385,44 +387,107 @@ export default {
                 this.filterPlayers = this.filterPlayers.filter(player => player.county == this.selectedCounty);
             }
 
-            if(this.selectedTrait)
+            /**
+             * Trait Filters
+             */
+
+            if(this.selectedTrait === 'Crosser')
             {
-                for(var i = 0; i < this.filterPlayers.length; i++)
-                {
-                    this.filterPlayers[i].traits = Object.keys(this.filterPlayers[i].traits);
-                    for (let j = 0; j < this.filterPlayers[i].traits.length; j++) {
-                        this.filterPlayers[i].traits[j] = this.filterPlayers[i].traits[j].replace('-', ' ')
-                    }
-                }
-                this.filterPlayers = this.filterPlayers.filter(player => player.trait == this.selectedTrait);
+                this.filterPlayers = this.filterPlayers.filter(player => player.traits.Crosser === true);
+            }
+            if(this.selectedTrait === 'Dribbler')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.traits.Dribbler === true);
+            }
+            if(this.selectedTrait === 'Finisher')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.traits.Finisher === true);
+            }
+            if(this.selectedTrait === 'Heading')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.traits.Heading === true);
+            }
+            if(this.selectedTrait === 'Leader')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.traits.Leader === true);
+            }
+            if(this.selectedTrait === 'Long Shots')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.traits.Long_Shots === true);
+            }
+            if(this.selectedTrait === 'Long Throw')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.traits.Long_Throw === true);
+            }
+            if(this.selectedTrait === 'Penalty Taker')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.traits.Penalty_Taker === true);
+            }
+            if(this.selectedTrait === 'Playmaker')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.traits.Playmaker === true);
+            }
+            if(this.selectedTrait === 'Set Pieces')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.traits.Set_Pieces === true);
+            }
+            if(this.selectedTrait === 'Speedster')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.traits.Speedster === true);
+            }
+            if(this.selectedTrait === 'Strength')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.traits.Strength === true);
+            }
+            if(this.selectedTrait === 'Workhorse')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.traits.Workhorse === true);
             }
 
-            if(this.selectedPosition)
-            {
-                var array = [];
+            /**
+             * Positions Filters
+             */
 
-                // for(var i = 0; i < this.filterPlayers.length; i++)
-                // {
-                //     this.filterPlayers[i].positions = Object.keys(this.filterPlayers[i].positions);
-                //     for (let j = 0; j < this.filterPlayers[i].positions.length; j++) {
-                //         this.filterPlayers[i].positions[j] = this.filterPlayers[i].positions[j].replace('-', ' ')
-                //         if(this.filterPlayers[i].positions[j] === this.selectedPosition)
-                //         {
-                //             array.push(this.filterPlayers[i])
-                //         }
-                //     }
-                // }
-                this.filterPlayers = this.filterPlayers.filter(function(player){
-                    for (var j = 0; j < player.positions.length; j++) {
-                        player.positions[j] = player.positions[j].replace('-', ' ')
-                        return player.positions[j] === this.selectedPosition;
-                    }
-                });
-                console.log(this.filterPlayers)
-                
+            if(this.selectedPosition === 'Goalkeeper')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.positions.Goalkeeper === true);
             }
-            
-            
+            if(this.selectedPosition === 'Right Back')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.positions.Right_Back === true);
+            }
+            if(this.selectedPosition === 'Left Back')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.positions.Left_Back === true);
+            }
+            if(this.selectedPosition === 'Centre Back')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.positions.Centre_Back === true);
+            }
+            if(this.selectedPosition === 'Defensive Midfield')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.positions.Defensive_Midfield === true);
+            }
+            if(this.selectedPosition === 'Centre Midfield')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.positions.Centre_Midfield === true);
+            }
+            if(this.selectedPosition === 'Attacking Midfield')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.positions.Attacking_Midfield === true);
+            }
+            if(this.selectedPosition === 'Right Wing')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.positions.Right_Wing === true);
+            }
+            if(this.selectedPosition === 'Left Wing')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.positions.Left_Wing === true);
+            }
+            if(this.selectedPosition === 'Striker')
+            {
+                this.filterPlayers = this.filterPlayers.filter(player => player.positions.Striker === true);
+            }
         }
     }
 }

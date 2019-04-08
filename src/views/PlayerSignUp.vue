@@ -69,7 +69,7 @@ export default {
             selectedFoot: '',
             checkedPositions: {},
             positionsObj: {},
-            checkedTraits: [],
+            checkedTraits: {},
             traitsObj: {}
         };
     },
@@ -123,6 +123,7 @@ export default {
                     var selectedCounty = this.selectedCounty;
                     var selectedFoot = this.selectedFoot;
                     var checkedPositions = this.checkedPositionsArray;
+                    var checkedTraits = this.checkedTraitsArray;
 
                     playersRef.set({
                         firstName: firstName,
