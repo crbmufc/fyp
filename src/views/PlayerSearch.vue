@@ -8,7 +8,7 @@
                     <div>Filter Players</div>
                 </template>
                 <!-- <div class="age-filter">
-                    <v-text-field v-model="selectedAge" label="Age" type="number"></v-text-field>
+                    <v-text-field v-model="selectedAge" label="Age" type="number"></v-text-field>''
                 </div> -->
                 <div class="playing-experience-filter player-filter"> 
                     <v-radio-group v-model="selectedPlayingExperience" label="Playing Experience">
@@ -17,12 +17,10 @@
                         <v-radio label="Semi Professional" value="Semi Professional"></v-radio>
                         <v-radio label="Professional" value="Professional"></v-radio>
                     </v-radio-group>
-                    <p>{{selectedPlayingExperience}}</p>
                 </div>
                 <v-container v-model="selectedCounty" class="player-filter" fluid>
                     <v-select label="County" :items="counties" name="county" item-text="countyValue" v-model="selectedCounty" outline single-line></v-select>
                 </v-container>
-                <p>{{selectedCounty}}</p>
                 <div class="positions-filter player-filter">
                     <v-radio-group v-model="selectedPosition" label="Position">
                         <v-radio label="Goalkeeper" value="Goalkeeper"></v-radio>
@@ -36,7 +34,6 @@
                         <v-radio label="Left Wing" value="Left Wing"></v-radio>
                         <v-radio label="Striker" value="Striker"></v-radio>
                     </v-radio-group>
-                    <p>{{selectedPosition}}</p>
                 </div>
                 <div class="traits-filter player-filter">
                     <v-radio-group v-model="selectedTrait" label="Trait">
@@ -54,7 +51,6 @@
                         <v-radio label="Strength" value="Strength"> </v-radio>
                         <v-radio label="Workhorse" value="Workhorse"> </v-radio>
                     </v-radio-group>
-                    <p>{{selectedTrait}}</p>
                 </div>
                 <div class="preferred-foot-filter player-filter">
                     <v-radio-group v-model="selectedPreferredFoot" label="Preferred Foot">
@@ -62,7 +58,6 @@
                         <v-radio label="Left" value="Left"></v-radio>
                         <v-radio label="Either" value="Either"></v-radio>
                     </v-radio-group>
-                    <p>{{selectedPreferredFoot}}</p>
                 </div>
                 <v-btn depressed class="orange white--text" @click="outputSelected">Apply Filters</v-btn>
             </v-expansion-panel-content>
@@ -70,7 +65,7 @@
     </div>
     <v-card class="player-results-card" hover v-for="(player, key) in filterPlayers" :key="key">
         <!-- <div class="player-results-card-header orange"> -->
-        <v-subheader class="orange">
+        <v-subheader class="grey">
             <v-card-title primary-title class="player-results-card-title">
                 <h2>{{player.firstName + ' ' + player.lastName}}</h2>
             </v-card-title>
@@ -122,7 +117,8 @@
             </v-card-title>
             <v-card-text>{{player.preferredFoot}}</v-card-text>
         </div>
-        <v-btn depressed class="orange white--text">Add To Watch List</v-btn>
+        <v-btn v-if="compareIds" @click="removeFromWatchList(player.firstName, player.lastName, player.currentClub, key)" depressed class="black white--text">Remove From Watch List</v-btn>
+        <v-btn v-else @click="addToWatchList(player.firstName, player.lastName, player.currentClub, key)" depressed class="grey white--text">Add To Watch List</v-btn>
     </v-card>
 </div>
 </template>
@@ -136,12 +132,15 @@ export default {
     created()
     {
         this.getPlayers()
+        this.getWatchList()
         this.outputSelected()
     },
     data() {
         return{
             players:'',
             filterPlayers:'',
+            filterPlayersIds: [],
+            watchListArray: [],
             positions: {
 
             },
@@ -366,12 +365,25 @@ export default {
             var playerSnap = snapshot.val();
             this.players = playerSnap;
             this.filterPlayers = this.players;
+            this.filterPlayersIds = (Object.keys(this.filterPlayers))
+            console.log(this.filterPlayersIds)
+        },
+
+        getWatchList() {
+            var userId = firebase.auth().currentUser.uid;
+            var watchList = database.ref('Scouts/' + userId + '/watchList').on('value', function(snapshot){
+                var watchListIds = snapshot.val()
+                var watchListArray = Object.keys(watchListIds)
+                this.watchListArray = watchListArray;
+            });
         },
 
         outputSelected(){
             this.filterPlayers = this.players;
+            this.filterPlayersIds = (Object.keys(this.filterPlayers))
             this.filterPlayers = (Object.values(this.filterPlayers))
-        
+
+            console.log(this.filterPlayersIds)
             if(this.selectedPlayingExperience)
             {
                 this.filterPlayers = this.filterPlayers.filter(player => player.playingExperience == this.selectedPlayingExperience);
@@ -488,8 +500,59 @@ export default {
             {
                 this.filterPlayers = this.filterPlayers.filter(player => player.positions.Striker === true);
             }
+
+            console.log(this.filterPlayers)
+        },
+
+        addToWatchList (firstName, lastName, club, key) {
+            var user = firebase.auth().currentUser
+            var userId = user.uid;
+            var playerKey = (firstName + lastName + club);
+            var playerName = firstName + ' ' + lastName;
+            var watchList = database.ref('Scouts/' + userId + '/watchList');
+            var playerKey = key
+
+            let playerObj = {}
+
+            playerObj[playerKey] = {
+                key: playerKey,
+                playerName: playerName,
+                club: club
+            }
+            
+            watchList.update(playerObj)
         }
+
+        // removeFromWatchList (firstName, lastName, club, key) {
+        //     var user = firebase.auth().currentUser
+        //     var userId = user.uid;
+        //     var playerKey = (firstName + lastName + club);
+        //     var playerName = firstName + ' ' + lastName;
+        //     var watchList = database.ref('Scouts/' + userId + '/watchList');
+        //     var playerKey = key
+
+        //     let playerObj = {}
+
+        //     playerObj[playerKey] = {
+        //     }
+
+        //     watchList.update(playerObj)
+        // }
     }
+    // computed: {
+    //     compareIds(key) {
+    //         var match = false;
+
+    //         for (let i = 0; i < this.watchListArray.length; i++) {
+    //             if(key == this.watchListArray[i]){
+    //                 match = true;
+    //                 break;
+    //             }  
+    //         }
+
+    //         return match;
+    //     }
+    // }
 }
 </script>
 

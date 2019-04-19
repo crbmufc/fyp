@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.154ea8b28dec26c485c2135971647f2a.js"
+  "/precache-manifest.6790e4bd31729ffddc423732e3577b23.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "nextgen-scout"});

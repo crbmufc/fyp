@@ -1,12 +1,14 @@
 <template>
     <div class="scout-sign-up">
         <h3>Create Scout Account</h3>
-        <input type="text" v-model="firstname" placeholder="First Name"><br>
-        <input type="text" v-model="lastname" placeholder="Last Name"><br>
-        <input type="text" v-model="clubname" placeholder="Club Name"><br>
-        <input type="text" v-model="email" placeholder="Email"><br>
-        <input type="password" v-model="password" placeholder="Password"><br>
-        <v-btn @click="scoutSignUp">Create Account</v-btn>
+        <v-form @submit="scoutSignUp" method="post">
+            <v-text-field type="text" v-model="firstname" placeholder="First Name" required></v-text-field>
+            <v-text-field type="text" v-model="lastname" placeholder="Last Name" required></v-text-field>
+            <v-text-field type="text" v-model="clubname" placeholder="Club Name" required></v-text-field>
+            <v-text-field type="text" v-model="email" placeholder="Email" required></v-text-field>
+            <v-text-field type="password" v-model="password" placeholder="Password" required></v-text-field>
+            <v-btn @click="scoutSignUp">Create Account</v-btn>
+        </v-form>
     </div>
 </template>
 
@@ -48,7 +50,7 @@ export default {
                     this.$router.replace('scout-home')
                 },
                 (err) => {
-                    alert('You have now signed in')
+                    alert('There was an error signing you up, please try again')
                 }
             );
         },

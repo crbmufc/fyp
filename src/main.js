@@ -9,11 +9,15 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
+// import Timestamp from 'time-stamp'
 
 Vue.use(VueFire)
 Vue.use(Vuetify, {
   iconfont: 'md'
 })
+
+// Vue.use(Timestamp)
+
 
 
 Vue.config.productionTip = false

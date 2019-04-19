@@ -21,6 +21,7 @@ export default {
     methods: {
         login: function()
         {
+            //Code from firebase docs https://firebase.google.com/docs/auth/web/password-auth
             firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
                 (user) => {
                     this.$router.replace('home')
