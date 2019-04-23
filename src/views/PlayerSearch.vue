@@ -3,7 +3,7 @@
     <h2>Player List</h2>
     <div class="filters">
         <v-expansion-panel>
-            <v-expansion-panel-content>
+            <v-expansion-panel-content v-model="show">
                 <template v-slot:header>
                     <div>Filter Players</div>
                 </template>
@@ -137,6 +137,7 @@ export default {
     },
     data() {
         return{
+            show:false,
             players:'',
             filterPlayers:'',
             filterPlayersIds: [],
@@ -366,7 +367,6 @@ export default {
             this.players = playerSnap;
             this.filterPlayers = this.players;
             this.filterPlayersIds = (Object.keys(this.filterPlayers))
-            console.log(this.filterPlayersIds)
         },
 
         getWatchList() {
@@ -379,11 +379,11 @@ export default {
         },
 
         outputSelected(){
+            // console.log(this.show);
             this.filterPlayers = this.players;
             this.filterPlayersIds = (Object.keys(this.filterPlayers))
             this.filterPlayers = (Object.values(this.filterPlayers))
 
-            console.log(this.filterPlayersIds)
             if(this.selectedPlayingExperience)
             {
                 this.filterPlayers = this.filterPlayers.filter(player => player.playingExperience == this.selectedPlayingExperience);
@@ -501,7 +501,8 @@ export default {
                 this.filterPlayers = this.filterPlayers.filter(player => player.positions.Striker === true);
             }
 
-            console.log(this.filterPlayers)
+            //collapses expansion panel when fliter button is clicked
+            this.show = false;
         },
 
         addToWatchList (firstName, lastName, club, key) {

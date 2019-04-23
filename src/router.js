@@ -20,7 +20,10 @@ const router = new Router({
     {
       path: '/player-search',
       name: 'PlayerSearch',
-      component: PlayerSearch
+      component: PlayerSearch,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/login',
@@ -66,25 +69,16 @@ const router = new Router({
     {
       path: '/',
       redirect: '/home'
-    },
-    // {
-    //   path: '#',
-    //   redirect: '/home'
-    // },
-    // {
-    //   path: '*',
-    //   redirect: '/home'
-    // }
+    }
   ]
 });
 
-// router.beforeEach((to, from, next) => {
-//   const currentUser = firebase.auth().currentUser;
-//   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+router.beforeEach((to, from, next) => {
+  const currentUser = firebase.auth().currentUser;
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
-//   if (requiresAuth && !currentUser) next('login');
-//   else if (!requiresAuth && currentUser) next('home');
-//   else next();
-// });
+  if (requiresAuth && !currentUser) next('login');
+  else next();
+});
 
 export default router;

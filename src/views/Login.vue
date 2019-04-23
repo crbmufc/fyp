@@ -1,9 +1,10 @@
 <template>
     <div class="login">
         <h3>Sign In</h3>
-        <input type="text" v-model="email" placeholder="Email"><br>
+        <input type="email" v-model="email" placeholder="Email"><br>
         <input type="password" v-model="password" placeholder="Password"><br>
-        <button @click="login">Sign In</button>
+        <v-btn @click="login">Sign In</v-btn>
+        <p>{{errMessage}}</p>
     </div>
 </template>
 
@@ -15,7 +16,9 @@ export default {
     data(){
         return {
             email: '',
-            password: ''
+            password: '',
+            errMessage: '',
+            alert: false
         };
     },
     methods: {
@@ -27,7 +30,8 @@ export default {
                     this.$router.replace('home')
                 },
                 (err) => {
-                    alert('You have now signed in')
+                    this.alert = true;
+                    this.errMessage = 'The email and password that you entered does not match our records. Please double-check and try again'
                 }
             );
         }

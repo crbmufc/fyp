@@ -9,16 +9,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
-// import Timestamp from 'time-stamp'
 
 Vue.use(VueFire)
 Vue.use(Vuetify, {
   iconfont: 'md'
 })
-
-// Vue.use(Timestamp)
-
-
 
 Vue.config.productionTip = false
 
@@ -45,24 +40,4 @@ firebase.auth().onAuthStateChanged(() => {
 });
 
 
-//filters
-
-
-// Vue.filter('filterPlayingExperience', function(value){
-//   return value.toUpperCase();
-// });
-// Vue.filter('filterCounty', function(value){
-//   return value.toUpperCase();
-// });
-// Vue.filter('filterPositions', function(value){
-//   return value.toUpperCase();
-// });
-// Vue.filter('filterTraits', function(value){
-//   return value.toUpperCase();
-// });
-// Vue.filter('filterPreferredFoot', function(value){
-//   return value.toUpperCase();
-// });
-
 export const database = firebaseApp.database();
-// export const players = database.ref('/Players');

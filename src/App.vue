@@ -1,13 +1,27 @@
 <template>
   <v-app id="app">
-    <div id="nav">
-      <router-link to="/home">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/sign-up">Sign Up</router-link>
-    </div>
+    <Header/>
     <router-view/>
+    <Nav/>
+    <Footer/>
   </v-app>
 </template>
+
+<script>
+import Nav from '@/components/Nav.vue'
+import Footer from '@/components/Footer.vue'
+import Header from '@/components/Header.vue'
+
+export default {
+  components: {
+    Header,
+    Nav,
+    Footer,
+  }
+  
+}
+</script>
+
 
 <style>
 
@@ -17,17 +31,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>
